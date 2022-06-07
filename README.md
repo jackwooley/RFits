@@ -6,3 +6,5 @@ The function `inmycloset()` is where you replicate your closet in R. There are 9
 `ootd()` selects the *O*utfit *O*f *T*he *D*ay (hence "ootd"). It takes T/F values for each argument; pass T to indicate the clothes categories you want it to randomly select from. It generally won't select dirty/used clothes, since each time an outfit is generated, the used clothes are appended to the dataframe `dirty`. Exceptions are made for things like pants, jackets, and hats that can be worn multiple times without washing. 
 
 Running `inmycloset` will reset the closet, and erases the dataframe of dirty clothes if it exists and puts all the clothes back in their original categories. 
+
+In the future, I'd like to remove the hard-coded logical tests from `ootd()` and make it more modular/easily customizable.
