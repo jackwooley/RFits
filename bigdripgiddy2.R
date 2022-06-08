@@ -1,3 +1,6 @@
+# install.packages("tidyverse")
+# the previous line needs to be run the first time if you don't have the 
+# tidyverse library installed
 library(tidyverse)
 
 inmycloset <- function(mypants = NULL, myshirts = NULL, mysocks = NULL, 
@@ -120,51 +123,10 @@ ootd <- function(mypants = T, myshirts = T, mysocks = T, myshoes = T,
   }
   
   # DISQUALIFY CERTAIN COMBOS
-  # tons of if statments about sock and shoe combos
-  if (socksOfTheDay == "spongebob" & shoesOfTheDay == "timbs"){
+  # tons of if statements about sock and shoe combos
+  # an example of a logical statement
+  if (socksOfTheDay == "sockname" & shoesOfTheDay == "shoename"){
     socksOfTheDay <- sample(socks$sockname, 1)
-    shoesOfTheDay <- sample(shoes$shoename, 1)
-  }
-  if (socksOfTheDay == "black sauconys" & shoesOfTheDay == "timbs"){
-    socksOfTheDay <- sample(socks$sockname, 1)
-    shoesOfTheDay <- sample(shoes$shoename, 1)
-  }
-  if (socksOfTheDay == "hawks" & shoesOfTheDay == "timbs"){
-    socksOfTheDay <- sample(socks$sockname, 1)
-    shoesOfTheDay <- sample(shoes$shoename, 1)
-  }
-  if (socksOfTheDay == "spongebob" & shoesOfTheDay == "am95s"){
-    socksOfTheDay <- sample(socks$sockname, 1)
-    shoesOfTheDay <- sample(shoes$shoename, 1)
-  }
-  if (socksOfTheDay == "spongebob" & shoesOfTheDay == "desert boots"){
-    socksOfTheDay <- sample(socks$sockname, 1)
-    shoesOfTheDay <- sample(shoes$shoename, 1)
-  }
-  if (socksOfTheDay == "hawks" & shoesOfTheDay == "desert boots"){
-    socksOfTheDay <- sample(socks$sockname, 1)
-    shoesOfTheDay <- sample(shoes$shoename, 1)
-  }
-  if (socksOfTheDay == "black sauconys" & shoesOfTheDay == "desert boots"){
-    socksOfTheDay <- sample(socks$sockname, 1)
-    shoesOfTheDay <- sample(shoes$shoename, 1)
-  }
-  if (socksOfTheDay == "tiger" & shoesOfTheDay == "timbs"){
-    socksOfTheDay <- sample(socks$sockname, 1)
-    shoesOfTheDay <- sample(shoes$shoename, 1)
-  }
-  
-  # other illegal combos
-  if (shirtOfTheDay == "red, white, and black ss button-up" & 
-      shoesOfTheDay == "desert boots"){
-    shirtOfTheDay <- sample(shirts$shirtname, 1)
-    shoesOfTheDay <- sample(shoes$shoename, 1)
-  }
-  # no shorts and boots combos
-  if (myshorts == TRUE & shoesOfTheDay == "desert boots"){
-    shoesOfTheDay <- sample(shoes$shoename, 1)
-  }
-  if (myshorts == TRUE & shoesOfTheDay == "timbs"){
     shoesOfTheDay <- sample(shoes$shoename, 1)
   }
     
@@ -223,38 +185,23 @@ ootd <- function(mypants = T, myshirts = T, mysocks = T, myshoes = T,
 }
 
 
+
+# some dummy data so you can see how it works
 inmycloset(mypants = #####
-           c("light blue jeans", "dark blue jeans", "camo pants", 
-             'calvin klein joggers', 'brixton chinos', 'rvca chinos', 
+           c("light blue jeans", 'rvca chinos', 
              'calvin klein chinos'), 
-           myshirts = c("grey nike", "black oakley", "black brixton", 
-                        "grey rvca", "white tnf", "pizza my heart", 
-                        "stan jersey", "boca jersey", "melo jersey", 
-                        "iverson jersey", "grey stan long sleeve", 
-                        "red stan long sleeve", "the bike lane", 
-                        "honduras jersey", "lingo sense", "warrior basketball", 
-                        "byu stats", "steve jobs", 
-                        "red, white, and black ss button-up", "hawaiian polo",
-                        "blue striped ls button-up", 'green tenet polo', 
+           myshirts = c("grey nike", 'green tenet polo', 
                         'light blue striped ls button-up'), 
-           mysocks = c(rep("black nikes", 6), rep("white nikes", 6), 
-                       "black sauconys", "cactus", "spongebob", "tiger", 
-                       "gonzo", "beaker", "animal", "fozzy", "qr code", "hawks",
+           mysocks = c("qr code", "hawks",
                        "sportotal"), 
-           myshoes = c("am95s", "lebrons", "flyknits", "timbs", 
-                       "alphabounces"), 
-           myhat = c("staple", "rexel norcal valley", "pocket dhi-plus", 
-                     "hbll"), 
-           myhoodie = c("but at what cost", "grey zip-up", "navy fleece", 
-                        "wesc plants", "kirkland signature"), 
-           mylayer = c("columbia windbreaker", "stan windbreaker", 
-                       "red flannel", "blue eb jacket", "yellow sf vest", 
+           myshoes = c("am95s", "lebrons"),
+           myhat = c("staple", "rexel norcal valley"), 
+           myhoodie = c("but at what cost", "navy fleece"), 
+           mylayer = c("columbia windbreaker", "yellow sf vest", 
                        "navy sf vest"), 
-           myjacket = c("cowboy jacket", "grey gerry jacket", 
-                        "brown 686 liner", "brown 686 shell + liner", 
+           myjacket = c("brown 686 shell + liner", 
                         "yellow sf jacket"), 
-           myshorts = c("black o'neill", "grey volcom", "camo nba", 
-                        "grey asics", "grey amazon")
+           myshorts = c("black o'neill", "camo nba")
            #####
 )
 
