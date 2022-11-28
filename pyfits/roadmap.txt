@@ -1,0 +1,6 @@
+ - all the functions have their basic functionality down.
+ - add a new function that will write the dict to json
+ - another one to let you modify it if you want to (open the json and append to the keys
+you want to modify)
+ - main() function that will take in a firsttime/othertime/modify parameter that allows
+you to create or modify the closet file if you want
