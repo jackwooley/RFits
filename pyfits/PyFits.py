@@ -1,6 +1,7 @@
 import random
-import pandas as pd
-import re
+# import pandas as pd
+from re import split
+import json
 
 
 def category_keys():
@@ -11,7 +12,7 @@ def category_keys():
     # type_list = list(str(input("""Enter a comma-separated list of the different clothing categories you'd like to include.""")).split(', '))
 
     clothing_type_inputs = str(input("""Enter a comma-separated list of the different clothing categories you'd like to include."""))
-    type_list = re.split(",\s*", clothing_type_inputs)
+    type_list = split(",\s*", clothing_type_inputs)
 
     clothes_dict = {}
     for i in range(0, len(type_list)):
@@ -22,10 +23,7 @@ def category_keys():
 test_dict = category_keys()
 
 
-def in_my_closet(which_dict: dict):
-
-    # todo: add a
-
+def fill_my_closet(which_dict: dict):
     """Add the clothes values into the previously created dictionary.
 
     Keyword arguments:
@@ -35,25 +33,24 @@ def in_my_closet(which_dict: dict):
     # key-value pair of {'clothes category': ['clothing item 1']})
     """
 
-    # for i in clothes_types:
-    #     list1 = list(str(input(f"Enter a comma-separated list of clothing items in the {i} category.")).split(", "))
-
     for j in which_dict.keys():
         input_for_choosing = str(input(f"Enter a comma-separated list of clothing items in the {j} category."))
-        which_dict[j] = re.split(",\s*", input_for_choosing)
+        which_dict[j] = split(",\s*", input_for_choosing)
 
-        # which_dict[j] = list(str(input(f"Enter a comma-separated list of clothing items in the {j} category.")).split(", "))
+    # write the dict to a json so that you can
+    with open('closet.json', 'w') as outfile:
+        json.dump(which_dict, outfile)
 
     return which_dict
 
 
-in_my_closet(test_dict)
+fill_my_closet(test_dict)
 
 
 def outfit_selector_function(closet: dict):
 
     input_for_choosing = str(input("""Enter a comma-separated list of categories you want to choose from."""))
-    choose_from = re.split(",\s*", input_for_choosing)
+    choose_from = split(",\s*", input_for_choosing)
 
     new_fit = {}
 

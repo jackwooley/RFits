@@ -1,6 +1,15 @@
- - all the functions have their basic functionality down.
+ - all the skeleton functions have their basic functionality down.
  - add a new function that will write the dict to json
  - another one to let you modify it if you want to (open the json and append to the keys
 you want to modify)
  - main() function that will take in a firsttime/othertime/modify parameter that allows
-you to create or modify the closet file if you want
+you to create or modify the closet file if you want (or an `input()` statement with set
+options)
+ - tolower() the inputs, if not in a set of approved ones retry it
+ - from there have three paths: an update one, a 'leave the same' one, and a first time/
+reset one
+ - add dirty laundry functionality
+ - write a function for append mode that you can pass a list of clothes keys to, it'll
+open the json as a dictionary, for each key in *args (? or is it **kwargs?) it'll append
+values to it (something like for i in [keys]:\n input(f'all clothes of {i} type you want to append')\n for j in new_values: closet_dict[i].append(j))
+    - new_values from input statements
