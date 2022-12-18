@@ -85,6 +85,9 @@ def outfit_selector_function(closet: dict):
     for i in choose_from:
         new_fit[i] = random.choice(closet[i])
 
+    # if new_fit[item] in dirty_laundry:
+    #   resample
+
     return new_fit
 
 
