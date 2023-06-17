@@ -19,5 +19,8 @@ reset one
     - if new_fit[category_i] in dirty_laundry[category]
  - write a function for append mode that you can pass a list of clothes keys to, it'll
 open the json as a dictionary, for each key in *args (? or is it **kwargs?) it'll append
-values to it (something like for i in [keys]:\n input(f'all clothes of {i} type you want to append')\n for j in new_values: closet_dict[i].append(j))
+values to it (something like
+            for i in [keys]:
+                input(f'all clothes of {i} type you want to append')
+                for j in new_values: closet_dict[i].append(j))
     - new_values from input statements
