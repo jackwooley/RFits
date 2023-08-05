@@ -16,7 +16,7 @@ def main():
     
     # if does_json_exist():
     
-    MODIFY_WRITE_OR_IGNORE_PARAMETER = str(input("""Enter the letter w to create or completely overwrite your current closet, k to append new keys to the closet,\n v to append new values to an existing key, d to delete values, or any other letter to skip this step if you are happy with what is currently in it. """))
+    MODIFY_WRITE_OR_IGNORE_PARAMETER = str(input("""Welcome to PyFits!! Enter the letter w to create or completely overwrite your current closet, k to append new keys to the closet,\n v to append new values to an existing key, d to delete clothing keys or values, or any other letter to skip this step if you are happy with what is currently in it. """))
     
     # fill up the closet with clothing items (values)
     # full_closet = fill_my_closet(closet_keys, MODIFY_WRITE_OR_IGNORE_PARAMETER)
@@ -25,7 +25,7 @@ def main():
     # change the mode string to lower and make sure it's an accepted input
     which_mode_lower = MODIFY_WRITE_OR_IGNORE_PARAMETER.lower()
     if which_mode_lower == 'w':
-        CLOTHING_TYPES = str(input("""Enter a comma-separated list of the different clothing categories you'd like to include."""))
+        CLOTHING_TYPES = str(input("""Enter a comma-separated list of the different clothing categories you'd like to include: """))
         # fill up the closet with clothing types (keys)
         closet_keys = category_keys(CLOTHING_TYPES)
         fill_my_closet(closet_keys, full_closet, which_mode_lower)
@@ -59,7 +59,7 @@ def main():
         with open('closet.json') as json_file:
             closet = json.load(json_file)
         deleter()
-        with open('closet.json') as json_file:
+        with open('closet.json') as json_file: # TODO -- figure out why this isn't removing values from certain keys
             closet = json.load(json_file)
     
     else:
@@ -220,9 +220,6 @@ def add_new_keys(new_keys: list, closet: dict):
 
 
 # blind = outfit_selector_function(test_dict)
-
-print('for debugging')
-
 
 if __name__ == "__main__":
     main()
