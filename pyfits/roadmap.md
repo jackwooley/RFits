@@ -11,12 +11,12 @@ reset one
  - add dirty laundry functionality
     - takes new_fit dictionary in
     - a little bit of pseudocode:
-      dirty_laundry = {}
-      for i in new_fit.keys():
-        dirty_laundry[i].append(new_fit[i])
+      `dirty_laundry = {}`
+      `for i in new_fit.keys():`
+        `dirty_laundry[i].append(new_fit[i])`
       
 
-    - if new_fit[category_i] in dirty_laundry[category]
+    - if `new_fit[category_i]` in `dirty_laundry[category]`
  - write a function for append mode that you can pass a list of clothes keys to, it'll
 open the json as a dictionary, for each key in *args (? or is it **kwargs?) it'll append
 values to it (something like
