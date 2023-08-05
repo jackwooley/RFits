@@ -4,6 +4,10 @@ import re
 import json
 
 
+# TODO -- SET UP ERROR HANDLING!!!!
+# TODO -- set up laundry basket
+
+
 def main():
     
     # check if closet.json exists or not
@@ -12,7 +16,7 @@ def main():
     
     # if does_json_exist():
     
-    MODIFY_WRITE_OR_IGNORE_PARAMETER = str(input("""Enter the letter w to create or completely overwrite your current closet, a to append new values, d to delete values, \nor any other letter to skip this step if you are happy with what is currently in it."""))
+    MODIFY_WRITE_OR_IGNORE_PARAMETER = str(input("""Enter the letter w to create or completely overwrite your current closet, k to append new keys to the closet,\n v to append new values to an existing key, d to delete values, or any other letter to skip this step if you are happy with what is currently in it. """))
     
     # fill up the closet with clothing items (values)
     # full_closet = fill_my_closet(closet_keys, MODIFY_WRITE_OR_IGNORE_PARAMETER)
@@ -28,7 +32,18 @@ def main():
         write_closet_to_json(full_closet, which_mode_lower)
         with open('closet.json') as json_file:
             closet = json.load(json_file)
-    elif which_mode_lower == 'a':
+    
+    elif which_mode_lower == 'k':
+        with open('closet.json') as json_file:
+            closet = json.load(json_file)
+        keys_to_add = re.split("\s*,\s*", str(input(
+            f"""Which clothing categories would you like to add to your closet? You currently have the following: {re.sub("'", '', str(closet.keys())[11:-2])}. Enter a comma-separated list: """)))
+        # modify_closet_json(list_of_keys_to_modify)
+        add_new_keys(keys_to_add, closet=closet)
+        with open('closet.json') as json_file:
+            closet = json.load(json_file)
+    
+    elif which_mode_lower == 'v':
         with open('closet.json') as json_file:
             closet = json.load(json_file)
         keys_to_modify = str(input(
@@ -39,12 +54,14 @@ def main():
         print('sdfa')
         with open('closet.json') as json_file:
             closet = json.load(json_file)
+    
     elif which_mode_lower == 'd':
         with open('closet.json') as json_file:
             closet = json.load(json_file)
         deleter()
         with open('closet.json') as json_file:
             closet = json.load(json_file)
+    
     else:
         with open('closet.json') as json_file:
             closet = json.load(json_file)
@@ -170,9 +187,10 @@ def deleter():
     for kv in kv_to_delete:
         v_to_delete = str(input(
             f"""Which values would you like to delete from {str(kv)}? Your options are: {re.sub("'", '', str(closet_to_modify[kv])[2:-2])}. Enter comma-separated values: """))
-        v_to_delete = re.sub('\s*,\s*', ',', v_to_delete).split(',')
-        for deleted_ in v_to_delete:
-            closet_to_modify = delete_values(deleted_, kv, closet_to_modify)
+        if v_to_delete != '':
+            v_to_delete = re.sub('\s*,\s*', ',', v_to_delete).split(',')
+            for deleted_ in v_to_delete:
+                closet_to_modify = delete_values(deleted_, kv, closet_to_modify)
 
     write_closet_to_json(closet_to_modify, 'w')
 
@@ -191,6 +209,14 @@ def outfit_selector_function(closet: dict):
     #   resample
 
     return new_fit
+
+
+def add_new_keys(new_keys: list, closet: dict):
+    for key in new_keys:
+        new_values = re.split("\s*,\s*", str(input(f"Enter a comma-separated list of clothing items to fill the {key} category with.")))
+        closet[key] = new_values
+    
+    write_closet_to_json(closet, 'w')
 
 
 # blind = outfit_selector_function(test_dict)
